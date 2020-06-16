@@ -1,0 +1,6 @@
+{:deps {org.clojure/clojure         "1.10.1"
+        org.clojure/clojurescript   "1.10.764"
+        thheller/shadow-cljs        "2.8.110"
+        reagent                     "0.10.0"
+        org.clojure/core.async      "1.1.587"
+        com.andrewmcveigh/cljs-time "0.5.2"}}
