@@ -76,7 +76,7 @@
   (let [external-model (reagent/atom (deref-or-value model))  ;; Holds the last known external value of model, to detect external model changes
         internal-model (reagent/atom (if (nil? @external-model) "" @external-model))] ;; Create a new atom from the model to be used internally (avoid nil)
     (fn
-      [& {:keys [model on-change status status-icon? status-tooltip placeholder width height rows change-on-blur? validation-regex disabled? class style attr]
+      [& {:keys [model on-change status status-icon? status-tooltip placeholder width height rows change-on-blur? validation-regex disabled? class style attr :custom/outer]
           :or   {change-on-blur? true}
           :as   args}]
       {:pre [(validate-args-macro input-text-args-desc args "input-text")]}
@@ -88,7 +88,7 @@
           (reset! external-model latest-ext-model)
           (reset! internal-model latest-ext-model))
         [h-box
-         :class    "rc-input-text "
+         :class    (str "rc-input-text " (:class outer))
          :align    :start
          :width    (if width width "250px")
          :children [[:div
